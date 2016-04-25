@@ -1,0 +1,45 @@
+.stats-widget {
+  width: 100%;
+  margin: 0 0 2em;
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #444;
+    // max-width: 17em;
+    border-right: 10px solid white;
+    &:hover {
+      border-right: 10px solid #852729;
+    }
+  }
+
+  &__icon {
+    font-size: 1.5em;
+    margin-right: 1rem;
+  }
+  &__title {
+    span {
+      font-style: italic;
+      font-size: 0.93em;
+    }
+  }
+  &__stat {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-left: auto;
+  }
+
+
+  .fa {
+    &-instagram {
+      color: #517fa4;
+    }
+    &-facebook {
+      color: #3b5998;
+    }
+    &-twitter {
+      color: #00aced;
+    }
+
+  }
+}

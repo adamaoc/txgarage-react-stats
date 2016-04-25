@@ -1,0 +1,29 @@
+.grid-flex {
+  display: flex;
+  flex-direction: column;;
+  @include bp(sm) {
+    flex-direction: row;
+    padding: 0.5em;
+  }
+}
+.app-sidebar--wrap {
+  padding: 1em;
+  @include bp(sm) {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 18em;
+    max-width: 18em;
+  }
+}
+
+.app-content--wrap {
+  padding: 1em;
+  @include bp(sm) {
+    flex: 2;
+  }
+}
+
+.app-footer {
+  text-align: center;
+  padding-top: 2em;
+}

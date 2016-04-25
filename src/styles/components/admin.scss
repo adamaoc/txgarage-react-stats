@@ -1,0 +1,81 @@
+.admin-btn {
+  margin-left: auto;
+  padding-right: 1em;
+  align-self: center;
+  i {
+    color: palette(priGray);
+  }
+}
+
+.admin-panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 20em;
+  background: #fff;
+  box-shadow: -1px 0 8px #333;
+  &--header {
+    display: flex;
+    padding: 0.5em 0.5em 1em 1em;
+    align-items: center;
+    border-bottom: 3px solid palette(priWhite, dark);
+    > h5 {
+      padding: 0;
+    }
+  }
+  &--closer {
+    margin-left: auto;
+    padding: 0 1em;
+    cursor: pointer;
+  }
+  &--login {
+    position: absolute;
+    top: 50%;
+    margin: 1em;
+    padding: 1em;
+    transform: translateY(-50%);
+  }
+}
+
+label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  color: palette(priGray);
+}
+
+.txt-input {
+  &--lg {
+    width: 100%;
+    margin-bottom: 1em;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: palette(priGray, dark);
+    padding: 0 0.5em;
+  }
+}
+
+.admin-widget {
+  margin: 1em;
+  background: palette(secGray, lightest);
+  border: 1px solid palette(secGray, lightest);
+  h5 {
+    padding: 0.5rem 1rem;
+    color: palette(priRed, dark);
+  }
+  &__main {
+    background: palette(priWhite);
+    padding: 1em;
+    .Select {
+      margin-bottom: 1em;
+    }
+  }
+  &__footer {
+    display: flex;
+    align-items: center;
+    > button {
+      margin-left: auto;
+    }
+  }
+}
