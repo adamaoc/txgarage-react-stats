@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Chart from './Chart';
 
-const source = 'http://localhost:8888/views/';
+const source = 'http://api.txgarage.com/views/';
 
 class ViewsChartContainer extends Component {
   constructor(props) {

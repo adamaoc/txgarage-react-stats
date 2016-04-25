@@ -16,7 +16,7 @@
     "browser-sync": "2.9.11",
     "browserify": "11.2.0",
     "connect-history-api-fallback": "1.1.0",
-    "foundation-uss-mix": "file:../../../../../var/folders/nc/fz17vw5n1rb199cxv0dm10wr0000gn/T/npm-22463-b1c8c679/git-cache-1e5484a97be6/34be6f774ed457c34e704bb0acd538756d12f6c0",
+    "foundation-uss-mix": "https://github.com/adamaoc/libertyweb-foundation.git",
     "gulp": "3.9.0",
     "gulp-autoprefixer": "3.1.0",
     "gulp-notify": "2.2.0",
@@ -38,6 +38,6 @@
   },
   "dependencies": {
     "d3": "^3.5.16",
-    "dimple": "file:../../../../../var/folders/nc/fz17vw5n1rb199cxv0dm10wr0000gn/T/npm-23494-1ff2c919/git-cache-f35438448ae0/dbf65501fb5eebfe1755f5a7d0f3f112e5c654f9"
+    "dimple": "git+https://github.com/PMSI-AlignAlytics/dimple.git"
   }
 }
