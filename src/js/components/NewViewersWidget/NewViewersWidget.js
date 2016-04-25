@@ -3,7 +3,7 @@ import dimple from 'dimple';
 
 const chartData = [
   { viewers: 'New', value: 76 },
-  { viewers: 'Retruning', value: 24 }
+  { viewers: 'Returning', value: 24 }
 ];
 
 class NewViewersWidget extends Component {
