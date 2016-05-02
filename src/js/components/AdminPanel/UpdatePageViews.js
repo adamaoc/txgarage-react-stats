@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import axios from 'axios';
+import APIURL from '../../helpers/ApiUrl';
 
-const source = 'http://api.txgarage.com/';
-
+const source = APIURL('views/post');
 const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const getMonthOptions = () => {

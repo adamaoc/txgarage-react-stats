@@ -16,6 +16,12 @@ class Layout extends Component {
       rerender: false
     }
   }
+  componentDidMount() {
+    console.log(window.location);
+    if (window.location.hash === '#admin') {
+      this.setState({ isAdminOpen: true });
+    }
+  }
   openAdmin() {
     this.setState({ isAdminOpen: true });
   }
@@ -39,9 +45,6 @@ class Layout extends Component {
               <small>Welcom to the stats</small>
               Dashboard
             </h1>
-            {/* <div className="admin-btn">
-              <i className="fa fa-cogs" onClick={this.openAdmin}></i>
-            </div> */}
           </div>
           <div className="grid-flex">
             <div className="app-sidebar--wrap">

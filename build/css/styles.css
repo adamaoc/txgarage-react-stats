@@ -924,6 +924,7 @@ button {
   vertical-align: middle; }
 
 .Select-input > input {
+  width: 100%;
   background: none transparent;
   border: 0 none;
   box-shadow: none;

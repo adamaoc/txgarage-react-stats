@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import APIURL from '../../helpers/ApiUrl';
 
-const source = 'http://api.txgarage.com/stats/';
+const source = APIURL('stats');
 
 class SocialStatsContainer extends Component {
   constructor(props) {

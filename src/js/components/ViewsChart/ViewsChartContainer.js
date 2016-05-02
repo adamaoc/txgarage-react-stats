@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Chart from './Chart';
+import APIURL from '../../helpers/ApiUrl';
 
-const source = 'http://api.txgarage.com/views/';
+const source = APIURL('views');
 
 class ViewsChartContainer extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class ViewsChartContainer extends Component {
         <h5>Pageviews
           <span> - average views {this._renderAvg()} p/m</span>
         </h5>
-        <div className="base-widget">
+        <div className="base-widget" style={{height:420}}>
           {this.state.views
             ? <Chart views={this.state.views} {...this.props} />
             : <div></div>

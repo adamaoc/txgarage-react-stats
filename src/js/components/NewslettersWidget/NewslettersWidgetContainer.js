@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import APIURL from '../../helpers/ApiUrl';
 
-const source = 'http://api.txgarage.com/newsletters/';
+const source = APIURL('newsletters');
 
 const getState = () => {
     return {

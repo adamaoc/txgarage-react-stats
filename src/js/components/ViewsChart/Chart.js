@@ -36,7 +36,7 @@ class Chart extends Component {
     }
   }
   render() {
-    return <div id="chart"></div>;
+    return <div id="chart" style={{height: 420}}></div>;
   }
 }
 
