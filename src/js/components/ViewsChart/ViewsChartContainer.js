@@ -33,7 +33,7 @@ class ViewsChartContainer extends Component {
     }
   }
   componentWillUnmount() {
-    this.serverRequest.abort();
+    // this.serverRequest.abort();
   }
   _setBarChart() {
     this.setState({ chartType: 'bar' });
@@ -47,7 +47,7 @@ class ViewsChartContainer extends Component {
       const views = this.state.views;
       let newViewArr = views.filter(v => parseInt(v.views) != 0);
       newViewArr.splice((newViewArr.length - 1), newViewArr.length);
-      newViewArr.splice(0, newViewArr.length - 4);
+      newViewArr.splice(0, newViewArr.length - 7);
       let sum = 0;
       newViewArr.forEach((v) => {
         sum = sum + parseInt(v.views);
@@ -58,6 +58,7 @@ class ViewsChartContainer extends Component {
     return avg;
   }
 	render() {
+    const { views } = this.state;
 		return (
       <div className="pageviews-widget">
         <h5>Pageviews
@@ -65,7 +66,7 @@ class ViewsChartContainer extends Component {
         </h5>
         <div className="base-widget" style={{height:420}}>
           {this.state.views
-            ? <Chart views={this.state.views} {...this.props} />
+            ? <Chart views={views} {...this.props} />
             : <div></div>
           }
         </div>

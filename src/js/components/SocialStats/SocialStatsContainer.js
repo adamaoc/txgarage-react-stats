@@ -11,17 +11,17 @@ class SocialStatsContainer extends Component {
   }
 
   componentDidMount() {
-    this.serviceRequest =
-      axios.get(source)
-        .then((result) => {
-          this.setState({
-            stats: result.data.stats
-          });
-        });
+    // this.serviceRequest =
+    //   axios.get(source)
+    //     .then((result) => {
+    //       this.setState({
+    //         stats: result.data.stats
+    //       });
+    //     });
   }
 
   componentWillUnmount() {
-    this.serverRequest.abort();
+    // this.serverRequest.abort();
   }
 
   render() {

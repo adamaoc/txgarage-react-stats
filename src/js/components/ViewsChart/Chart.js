@@ -26,9 +26,11 @@ class Chart extends Component {
     const myChart = new dimple.chart(svg, this.props.views);
     const x = myChart.addCategoryAxis('x', ['month', 'year']);
     x.addOrderRule('id');
+
     const y = myChart.addMeasureAxis("y", "views");
     y.tickFormat = ",.f";
-    myChart.addSeries("year", dimple.plot.area);
+    // myChart.addSeries("year", dimple.plot.area);
+    myChart.addSeries("year", dimple.plot.bar);
     myChart.addLegend(10, 10, '100%', 25, "right");
     myChart.draw(1000);
     if (!this.state.isChart) {
