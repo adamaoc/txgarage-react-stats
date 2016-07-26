@@ -7,7 +7,8 @@ const source = APIURL('newsletters');
 const getState = () => {
     return {
       subscribers: null,
-      monthlySent: null
+      campaignsSent: null,
+      openPercent: null
     }
 };
 
@@ -21,9 +22,11 @@ class NewslettersWidgetContainer extends Component {
     this.serviceRequest =
       axios.get(source)
         .then((result) => {
+          const stats = result.data.newsletter;
           this.setState({
-            subscribers: result.data.newsletter[0].stat,
-            monthlySent: result.data.newsletter[1].stat
+            subscribers: stats.subscribers,
+            campaignsSent: stats.campaigns,
+            openPercent: stats.opens
           });
         });
   }
@@ -33,13 +36,14 @@ class NewslettersWidgetContainer extends Component {
   }
 
   render() {
-    const { subscribers, monthlySent } = this.state;
+    const { subscribers, campaignsSent, openPercent } = this.state;
     return (
       <div className="newsletters-widget">
         <h5>txGarage Newsletter</h5>
         <div className="base-widget">
           <p>Subscribers: <strong>{subscribers}</strong></p>
-          <p>Monthly Sent: <strong>{monthlySent}</strong></p>
+          <p>Campaigns Sent: <strong>{campaignsSent}</strong></p>
+          <p>Average Opens: <strong>{openPercent}%</strong></p>
         </div>
       </div>
     );
