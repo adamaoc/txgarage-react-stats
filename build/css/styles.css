@@ -387,7 +387,6 @@ hr {
 
 a {
   color: #0071bc;
-  -webkit-transition: all ease-in-out 280ms;
   transition: all ease-in-out 280ms; }
 
 a:hover {
@@ -658,7 +657,6 @@ table.plain tbody > tr:nth-child(odd) > th {
   position: relative;
   background: #323a45;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
 
@@ -682,7 +680,6 @@ table.plain tbody > tr:nth-child(odd) > th {
   @media (min-width: 40rem) {
     .top-nav__list {
       display: -webkit-box;
-      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex; } }
   .top-nav__list > li:hover {
@@ -698,7 +695,6 @@ table.plain tbody > tr:nth-child(odd) > th {
     line-height: 3.125rem;
     border-left: 1px solid #475363;
     padding: 0 2em;
-    -webkit-transition: all ease-in-out 280ms;
     transition: all ease-in-out 280ms; }
   .top-nav__list__has-dropdown {
     position: relative; }
@@ -742,7 +738,6 @@ button {
   background: #aeb0b5;
   color: #ffffff;
   padding: 0.75em 1.75em;
-  -webkit-transition: all ease-in-out 280ms;
   transition: all ease-in-out 280ms; }
   button:hover {
     background: #5b616b; }
@@ -826,7 +821,7 @@ button {
  * ============
  * Created by Jed Watson and Joss Mackison for KeystoneJS, http://www.keystonejs.com/
  * https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs
- * MIT License: https://github.com/keystonejs/react-select
+ * MIT License: https://github.com/JedWatson/react-select
 */
 .Select {
   position: relative; }
@@ -845,7 +840,8 @@ button {
 
 .Select.is-disabled .Select-arrow-zone {
   cursor: default;
-  pointer-events: none; }
+  pointer-events: none;
+  opacity: 0.35; }
 
 .Select-control {
   background-color: #fff;
@@ -855,6 +851,8 @@ button {
   color: #333;
   cursor: default;
   display: table;
+  border-spacing: 0;
+  border-collapse: separate;
   height: 36px;
   outline: none;
   overflow: hidden;
@@ -863,6 +861,9 @@ button {
 
 .Select-control:hover {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06); }
+
+.Select-control .Select-input:focus {
+  outline: none; }
 
 .is-searchable.is-open > .Select-control {
   cursor: text; }
@@ -873,7 +874,8 @@ button {
   background: #fff;
   border-color: #b3b3b3 #ccc #d9d9d9; }
 
-.is-open > .Select-control > .Select-arrow {
+.is-open > .Select-control .Select-arrow {
+  top: -2px;
   border-color: transparent transparent #999;
   border-width: 0 5px 5px; }
 
@@ -885,7 +887,7 @@ button {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 126, 255, 0.1); }
 
 .Select-placeholder,
-:not(.Select--multi) > .Select-control .Select-value {
+.Select--single > .Select-control .Select-value {
   bottom: 0;
   color: #aaa;
   left: 0;
@@ -900,19 +902,19 @@ button {
   text-overflow: ellipsis;
   white-space: nowrap; }
 
-.has-value:not(.Select--multi) > .Select-control > .Select-value .Select-value-label,
-.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value .Select-value-label {
+.has-value.Select--single > .Select-control .Select-value .Select-value-label,
+.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
   color: #333; }
 
-.has-value:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label,
-.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label {
+.has-value.Select--single > .Select-control .Select-value a.Select-value-label,
+.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label {
   cursor: pointer;
   text-decoration: none; }
 
-.has-value:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:hover,
-.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:hover,
-.has-value:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:focus,
-.has-value.is-pseudo-focused:not(.Select--multi) > .Select-control > .Select-value a.Select-value-label:focus {
+.has-value.Select--single > .Select-control .Select-value a.Select-value-label:hover,
+.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label:hover,
+.has-value.Select--single > .Select-control .Select-value a.Select-value-label:focus,
+.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label:focus {
   color: #007eff;
   outline: none;
   text-decoration: underline; }
@@ -932,10 +934,12 @@ button {
   display: inline-block;
   font-family: inherit;
   font-size: inherit;
-  height: 34px;
   margin: 0;
   outline: none;
-  padding: 0;
+  line-height: 14px;
+  /* For IE 8 compatibility */
+  padding: 8px 0 12px;
+  /* For IE 8 compatibility */
   -webkit-appearance: none; }
 
 .is-focused .Select-input > input {
@@ -1005,11 +1009,24 @@ button {
   border-width: 5px 5px 2.5px;
   display: inline-block;
   height: 0;
-  width: 0; }
+  width: 0;
+  position: relative; }
 
 .is-open .Select-arrow,
 .Select-arrow-zone:hover > .Select-arrow {
   border-top-color: #666; }
+
+.Select--multi .Select-multi-value-wrapper {
+  display: inline-block; }
+
+.Select .Select-aria-only {
+  display: inline-block;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+  float: left; }
 
 @-webkit-keyframes Select-animation-fadeIn {
   from {
@@ -1055,7 +1072,15 @@ button {
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px; }
 
+.Select-option.is-selected {
+  background-color: #f5faff;
+  /* Fallback color for IE 8 */
+  background-color: rgba(0, 126, 255, 0.04);
+  color: #333; }
+
 .Select-option.is-focused {
+  background-color: #ebf5ff;
+  /* Fallback color for IE 8 */
   background-color: rgba(0, 126, 255, 0.08);
   color: #333; }
 
@@ -1079,8 +1104,12 @@ button {
   margin-left: 5px; }
 
 .Select--multi .Select-value {
+  background-color: #ebf5ff;
+  /* Fallback color for IE 8 */
   background-color: rgba(0, 126, 255, 0.08);
   border-radius: 2px;
+  border: 1px solid #c2e0ff;
+  /* Fallback color for IE 8 */
   border: 1px solid rgba(0, 126, 255, 0.24);
   color: #007eff;
   display: inline-block;
@@ -1113,15 +1142,21 @@ button {
   cursor: pointer;
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
+  border-right: 1px solid #c2e0ff;
+  /* Fallback color for IE 8 */
   border-right: 1px solid rgba(0, 126, 255, 0.24);
   padding: 1px 5px 3px; }
 
 .Select--multi .Select-value-icon:hover,
 .Select--multi .Select-value-icon:focus {
+  background-color: #d8eafd;
+  /* Fallback color for IE 8 */
   background-color: rgba(0, 113, 230, 0.08);
   color: #0071e6; }
 
 .Select--multi .Select-value-icon:active {
+  background-color: #c2e0ff;
+  /* Fallback color for IE 8 */
   background-color: rgba(0, 126, 255, 0.24); }
 
 .Select--multi.is-disabled .Select-value {
@@ -1149,19 +1184,16 @@ button {
 
 .grid-flex {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column; }
   @media (min-width: 40rem) {
     .grid-flex {
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
-      -webkit-flex-direction: row;
           -ms-flex-direction: row;
               flex-direction: row;
       padding: 0.5em; } }
@@ -1171,15 +1203,12 @@ button {
   @media (min-width: 40rem) {
     .app-sidebar--wrap {
       -webkit-box-flex: 0;
-      -webkit-flex-grow: 0;
           -ms-flex-positive: 0;
               flex-grow: 0;
-      -webkit-flex-shrink: 0;
-          -ms-flex-negative: 0;
-              flex-shrink: 0;
-      -webkit-flex-basis: 18em;
-          -ms-flex-preferred-size: 18em;
-              flex-basis: 18em;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+      -ms-flex-preferred-size: 18em;
+          flex-basis: 18em;
       max-width: 18em; } }
 
 .app-content--wrap {
@@ -1187,7 +1216,6 @@ button {
   @media (min-width: 40rem) {
     .app-content--wrap {
       -webkit-box-flex: 2;
-      -webkit-flex: 2;
           -ms-flex: 2;
               flex: 2; } }
 
@@ -1199,7 +1227,6 @@ button {
   background: #143752;
   border-bottom: 5px solid #2d7cb9;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
   .txG-header-nav a {
@@ -1209,20 +1236,17 @@ button {
     list-style: none; }
   .txG-header-nav__logo {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
   .txG-header-nav .logo--wrap {
     color: #fff;
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     text-decoration: none; }
     .txG-header-nav .logo--wrap > span span {
       font-weight: 100; }
     .txG-header-nav .logo--wrap:hover .logo__txsvg svg, .txG-header-nav .logo--wrap:hover .logo__text {
-      -webkit-transition: all 300ms ease;
       transition: all 300ms ease;
       fill: #cae5ef;
       color: #cae5ef; }
@@ -1258,11 +1282,9 @@ button {
   margin: 0 0 2em; }
   .stats-widget a {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-    -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
     text-decoration: none;
@@ -1286,13 +1308,15 @@ button {
     color: #3b5998; }
   .stats-widget .fa-twitter {
     color: #00aced; }
+  .stats-widget .fa-youtube {
+    color: #bb0000; }
 
 .admin-btn {
   margin-left: auto;
   padding-right: 1em;
-  -webkit-align-self: center;
-      -ms-flex-item-align: center;
-          align-self: center; }
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center; }
   .admin-btn i {
     color: #aeb0b5; }
 
@@ -1306,12 +1330,10 @@ button {
   box-shadow: -1px 0 8px #333; }
   .admin-panel--header {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     padding: 0.5em 0.5em 1em 1em;
     -webkit-box-align: center;
-    -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
     border-bottom: 3px solid #f2f2f2; }
@@ -1357,11 +1379,9 @@ label {
       margin-bottom: 1em; }
   .admin-widget__footer {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-    -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center; }
     .admin-widget__footer > button {

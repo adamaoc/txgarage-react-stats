@@ -10,6 +10,7 @@ class ViewsChartContainer extends Component {
     super(props);
     this._setBarChart = this._setBarChart.bind(this);
     this._setLineChart = this._setLineChart.bind(this);
+    this.updateViews = this._updateViews.bind(this);
     this.state = {
       chartType: 'bar',
       views: null,
@@ -19,7 +20,7 @@ class ViewsChartContainer extends Component {
     this.serviceRequest =
       axios.get(source)
         .then((result) => {
-          this.setState({ views: result.data.views });
+          this.updateViews(result.data.views);
         });
   }
   componentDidUpdate() {
@@ -28,12 +29,22 @@ class ViewsChartContainer extends Component {
       this.serviceRequest =
         axios.get(source)
           .then((result) => {
-            this.setState({ views: result.data.views });
+            this.updateViews(result.data.views);
           });
     }
   }
+
   componentWillUnmount() {
     // this.serverRequest.abort();
+  }
+
+  _updateViews(views) {
+    const updatedViews = views.filter((month) => {
+      if (month.year != '2015') {
+        return month;
+      }
+    });
+    this.setState({ views: updatedViews });
   }
   _setBarChart() {
     this.setState({ chartType: 'bar' });

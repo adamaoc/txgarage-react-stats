@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import dimple from 'dimple';
+import dimple from '../../helpers/dimple';
 
 const chartData = [
   { viewers: 'New', value: 76 },

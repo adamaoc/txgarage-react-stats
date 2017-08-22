@@ -37,7 +37,6 @@
     "watchify": "3.4.0"
   },
   "dependencies": {
-    "d3": "^3.5.16",
-    "dimple": "git+https://github.com/PMSI-AlignAlytics/dimple.git"
+    "d3": "^4.0.*"
   }
 }
