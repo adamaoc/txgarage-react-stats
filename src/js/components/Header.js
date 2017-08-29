@@ -6,9 +6,9 @@ const Header = () => {
     <nav className="txG-header-nav">
       <div className="txG-header-nav__logo">
         <a href="/" className="logo--wrap">
-          <Logo />
-          <span className="logo__text">
-            stats.<span>tx</span>Garage
+          <span>STATS</span>
+          <span>
+            <img src="http://txgarage.com/images/2017/02/txg-logo-500x1201.png" alt="txGarage" />
           </span>
         </a>
       </div>

@@ -1,58 +1,18 @@
 .txG-header-nav {
-  background: #143752;
-  border-bottom: 5px solid #2d7cb9;
-  display: flex;
-  a {
-    color: white;
-    text-decoration: none;
-  }
-  li {
-    list-style: none;
-  }
-  &__logo {
-    display: flex;
-  }
+  background: white;
 
   .logo {
     &--wrap {
-      color: #fff;
-      display: flex;
+      color: #143752;
+      font-weight: bold;
+      font-size: 1.5em;
+      line-height: 60px;
+      height: 60px;
+      margin-left: 1em;
       text-decoration: none;
-      > span {
-        span {
-          font-weight: 100;
-        }
-      }
-      &:hover {
-        .logo__txsvg svg, .logo__text {
-          transition: all 300ms ease;
-          fill: #cae5ef;
-          color: #cae5ef;
-        }
-      }
-    }
-    &__txsvg {
-      width: 30px;
-      background: lighten(#143752, 9%);
-      padding: 0.8em 0.5em 0;
-      svg {
-        fill: white;
-      }
-      @media (min-width: 730px) {
-        width: 45px;
-      }
-    }
-    &__text {
-      display: none;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      font-weight: 400;
-      font-size: 1.25em;
-      line-height: 49px;
-      background: lighten(#143752, 5%);
-
-      @media (min-width: 730px) {
-        display: block;
+      img {
+        width: 250px;
+        height: 60px;
       }
     }
   }

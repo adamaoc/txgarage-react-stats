@@ -41,12 +41,6 @@ class Layout extends Component {
         <Header />
         <div className="main-wrap">
           <div className="grid-flex">
-            <h1>
-              <small>Welcom to the stats</small>
-              Dashboard
-            </h1>
-          </div>
-          <div className="grid-flex">
             <div className="app-sidebar--wrap">
               <SocialStats />
               <NewslettersWidget />
