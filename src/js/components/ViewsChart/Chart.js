@@ -28,16 +28,18 @@ class Chart extends Component {
     x.addOrderRule('id');
 
     const y = myChart.addMeasureAxis("y", "views");
-    // y.tickFormat = ",.f";
-    // myChart.addSeries("year", dimple.plot.area);
-    myChart.addSeries("year", dimple.plot.bar);
+    if (this.props.chartType === 'line') {
+      myChart.addSeries("year", dimple.plot.line);
+    } else {
+      myChart.addSeries("year", dimple.plot.bar);
+    }
     myChart.addLegend(10, 10, '100%', 25, "right");
     myChart.draw();
     if (!this.state.isChart) {
       this.setState({ isChart: true });
     }
   }
-  
+
   render() {
     return <div id="chart" style={{height: 420}}></div>;
   }

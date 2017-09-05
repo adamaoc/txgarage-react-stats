@@ -4,6 +4,7 @@ import SocialStats from './SocialStats';
 import ViewsChart from './ViewsChart';
 import NewslettersWidget from './NewslettersWidget/';
 import NewViewersWidget from './NewViewersWidget/';
+import YouTubeViews from './ViewsChart/YouTubeViews';
 import AdminPanel from './AdminPanel';
 
 class Layout extends Component {
@@ -11,6 +12,7 @@ class Layout extends Component {
     super(props);
     this.openAdmin = this.openAdmin.bind(this);
     this.closeAdmin = this.closeAdmin.bind(this);
+    this.handleRerendered = this._handleRerendered.bind(this);
     this.state = {
       isAdminOpen: false,
       rerender: false
@@ -46,17 +48,14 @@ class Layout extends Component {
               <NewslettersWidget />
             </div>
             <div className="app-content--wrap">
-              <ViewsChart rerender={this.state.rerender} handleRerendered={this._handleRerendered.bind(this)} />
+              <ViewsChart rerender={this.state.rerender} handleRerendered={this.handleRerendered} />
+              <YouTubeViews rerender={this.state.rerender} handleRerendered={this.handleRerendered} />
             </div>
             <div className="app-sidebar--wrap">
               <NewViewersWidget />
             </div>
           </div>
         </div>
-        {this.state.isAdminOpen
-          ? <AdminPanel handleClose={this.closeAdmin} handleUpdate={this.handleAdminUpdate.bind(this)} />
-          : <div></div>
-        }
         <footer className="app-footer">
           <small>Thanks for checking out our stats - with ♥ from Texans - visit <a href="http://txgarage.com" target="_blank">txGarage.com</a></small>
         </footer>

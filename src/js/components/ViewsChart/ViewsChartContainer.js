@@ -72,7 +72,7 @@ class ViewsChartContainer extends Component {
     const { views } = this.state;
 		return (
       <div className="pageviews-widget">
-        <h5>Pageviews
+        <h5>Website Pageviews
           <span> - average views {this._renderAvg()} p/m</span>
         </h5>
         <div className="base-widget" style={{height:420}}>
