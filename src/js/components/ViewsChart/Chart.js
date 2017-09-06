@@ -11,7 +11,7 @@ class Chart extends Component {
   }
   componentDidUpdate() {
     if(this.props.rerender) {
-      const chart = document.getElementById('chart');
+      const chart = document.getElementById(this.props.name);
       chart.innerHTML = '';
       setTimeout(() => {
         this._updateChart();
@@ -22,7 +22,7 @@ class Chart extends Component {
     }
   }
   _updateChart() {
-    const svg = dimple.newSvg('#chart', '100%', 400);
+    const svg = dimple.newSvg('#' + this.props.name, '100%', 400);
     const myChart = new dimple.chart(svg, this.props.views);
     const x = myChart.addCategoryAxis('x', ['month', 'year']);
     x.addOrderRule('id');
@@ -41,7 +41,7 @@ class Chart extends Component {
   }
 
   render() {
-    return <div id="chart" style={{height: 420}}></div>;
+    return <div id={this.props.name} style={{height: 420}}></div>;
   }
 }
 

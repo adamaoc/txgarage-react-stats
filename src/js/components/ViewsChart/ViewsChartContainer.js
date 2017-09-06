@@ -77,7 +77,7 @@ class ViewsChartContainer extends Component {
         </h5>
         <div className="base-widget" style={{height:420}}>
           {this.state.views
-            ? <Chart views={views} {...this.props} />
+            ? <Chart name="viewchart" views={views} {...this.props} />
             : <div></div>
           }
         </div>
