@@ -825,14 +825,16 @@ body {
 
 .main-wrap {
   padding: 1em;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-gap: 1em;
   grid-template-areas: "viewsChart viewsChart viewsChart viewsChart" "ytChart ytChart ytChart ytChart" "stats stats stats stats" "viewers viewers viewers viewers" "newsletter newsletter newsletter newsletter"; }
+  @supports (grid-area: auto) {
+    .main-wrap {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+      -ms-grid-rows: 1fr 1fr 1fr 1fr;
+          grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-gap: 1em; } }
   @media (min-width: 768px) {
     .main-wrap {
       margin-top: 2em;
