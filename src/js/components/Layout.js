@@ -42,19 +42,11 @@ class Layout extends Component {
       <div className="app-wrap">
         <Header />
         <div className="main-wrap">
-          <div className="grid-flex">
-            <div className="app-sidebar--wrap">
-              <SocialStats />
-              <NewslettersWidget />
-            </div>
-            <div className="app-content--wrap">
-              <ViewsChart rerender={this.state.rerender} handleRerendered={this.handleRerendered} />
-              <YouTubeViews rerender={this.state.rerender} handleRerendered={this.handleRerendered} />
-            </div>
-            <div className="app-sidebar--wrap">
-              <NewViewersWidget />
-            </div>
-          </div>
+          <SocialStats />
+          <NewslettersWidget />
+          <ViewsChart rerender={this.state.rerender} handleRerendered={this.handleRerendered} />
+          <YouTubeViews rerender={this.state.rerender} handleRerendered={this.handleRerendered} />
+          <NewViewersWidget />
         </div>
         <footer className="app-footer">
           <small>Thanks for checking out our stats - with ♥ from Texans - visit <a href="http://txgarage.com" target="_blank">txGarage.com</a></small>

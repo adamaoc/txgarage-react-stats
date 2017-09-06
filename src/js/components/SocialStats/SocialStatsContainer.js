@@ -27,7 +27,7 @@ class SocialStatsContainer extends Component {
   render() {
     const { stats } = this.state;
     return (
-      <div className="app">
+      <div className="social-stats">
         <h5>Social Stats</h5>
         <div className="stats-widget">
           {stats.map(({ id, title, stat, slug, link, color }) => {

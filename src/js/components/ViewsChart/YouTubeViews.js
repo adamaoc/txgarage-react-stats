@@ -66,7 +66,7 @@ const YouTubeAPIViews = [
     "id": "9",
     "year": "2017",
     "month": "Sept",
-    "views": "1122",
+    "views": "1542",
     "slugID": "2017_Sept"
   },
   {
@@ -148,7 +148,7 @@ class YouTubeViews extends Component {
 	render() {
     const { views } = this.state;
 		return (
-      <div className="pageviews-widget">
+      <div className="ytviews-widget">
         <h5>YouTube Video Views
           <span> - average views {this._renderAvg()} p/m</span>
         </h5>

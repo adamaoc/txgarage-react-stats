@@ -1,26 +1,5 @@
-.grid-flex {
-  display: flex;
-  flex-direction: column;;
-  @include bp(sm) {
-    flex-direction: row;
-    padding: 0.5em;
-  }
-}
-.app-sidebar--wrap {
-  padding: 1em;
-  @include bp(sm) {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 18em;
-    max-width: 18em;
-  }
-}
-
-.app-content--wrap {
-  padding: 1em;
-  @include bp(sm) {
-    flex: 2;
-  }
+body {
+  font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 
 .app-footer {
@@ -29,5 +8,57 @@
 }
 
 .main-wrap {
-  margin-top: 2em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+
+  grid-template-areas:
+    "viewsChart viewsChart viewsChart viewsChart"
+    "ytChart ytChart ytChart ytChart"
+    "stats stats stats stats"
+    "viewers viewers viewers viewers"
+    "newsletter newsletter newsletter newsletter";
+
+  @media (min-width: 768px) {
+    margin-top: 2em;
+    grid-template-areas:
+      "viewsChart viewsChart viewsChart viewsChart"
+      "ytChart ytChart ytChart ytChart"
+      "stats stats stats stats"
+      "newsletter newsletter viewers viewers";
+  }
+
+  @media (min-width: 1024px) {
+    padding: 2em;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "viewsChart viewsChart ytChart ytChart"
+      "stats stats newsletter viewers";
+  }
+
+  @media (min-width: 1366px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "stats viewsChart viewsChart viewsChart"
+      "newsletter viewers ytChart ytChart";
+  }
+}
+.pageviews-widget {
+  grid-area: viewsChart;
+}
+.ytviews-widget {
+  grid-area: ytChart;
+}
+.new-viewers-widget {
+  grid-area: viewers;
+}
+.social-stats {
+  grid-area: stats;
+}
+.newsletters-widget {
+  grid-area: newsletter;
 }
